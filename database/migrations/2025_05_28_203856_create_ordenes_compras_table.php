@@ -11,18 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('productos', function (Blueprint $table) {
+        Schema::create('ordenes_compras', function (Blueprint $table) {
             $table->id();
-            $table->string('producto_nombre', 80);
             $table->foreignId('proveedor_id')->constrained('proveedores');
-            $table->text('unidad')->nullable();
-            $table->text('notas')->nullable();
             $table->enum('estado', ['activo', 'inactivo'])->default('activo');
             $table->timestamps();
-            
-            // Índices adicionales para mejor rendimiento
-            $table->index('producto_nombre');
-
         });
     }
 
@@ -31,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('productos');
+        Schema::dropIfExists('ordenes_compras');
     }
 };
