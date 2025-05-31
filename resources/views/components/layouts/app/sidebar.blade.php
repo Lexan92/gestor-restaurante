@@ -10,7 +10,7 @@
         // Puedes agregar más elementos aquí
     ],
     // Puedes agregar más grupos aquí
-    'Inventarios'=>[
+    'Catalogos'=>[
         [
             'name' => 'Categorias Productos',
             'icon' => 'rectangle-group',
@@ -18,10 +18,10 @@
             'current' => request()->routeIs('admin.categoriasProductos.*'),
         ],
         [
-            'name' => 'Users',
-            'icon' => 'users',
-            'url' => route('dashboard'),
-            'current' => request()->routeIs('dashboard'),
+            'name' => 'Proveedores',
+            'icon' => 'truck',
+            'url' => route('admin.proveedores.index'),
+            'current' => request()->routeIs('admin.proveedores.*'),
         ],
     ]
 ];
