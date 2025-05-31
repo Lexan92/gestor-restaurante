@@ -13,7 +13,7 @@ class ProveedoresController extends Controller
      */
     public function index()
     {
-        $proveedores = Proveedores::orderBy('id', 'desc')->get();
+        $proveedores = Proveedores::active()->orderBy('id', 'desc')->get();
         return view('admin.proveedores.index', compact('proveedores'));
     }
 
@@ -84,7 +84,8 @@ class ProveedoresController extends Controller
      */
     public function destroy(Proveedores $proveedores)
     {
-        $proveedores->delete();
+        $proveedores->estado = 'inactivo'; // Cambiar el estado a inactivo
+        $proveedores->save(); // Guardar el cambio en la base de datos
         // Flash message
         session()->flash('swal', [
             'icon' => 'success',

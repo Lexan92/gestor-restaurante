@@ -14,5 +14,12 @@ class Proveedores extends Model
     protected $fillable = [
         'nombre',
         'telefono',
+        'estado',
     ];
+
+    // Scope para registros activos
+    public function scopeActive($query)
+    {
+        return $query->where('estado', 'activo');
+    }
 }

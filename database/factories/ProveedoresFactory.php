@@ -19,6 +19,7 @@ class ProveedoresFactory extends Factory
         return [
             'nombre' => $this->faker->company(),
             'telefono' => $this->faker->phoneNumber(),
+            'estado' => 'activo', // Default state
             'created_at' => now(),
             'updated_at' => now(),
         ];
