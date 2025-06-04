@@ -10,7 +10,6 @@ class Proveedores extends Model
     /** @use HasFactory<\Database\Factories\ProveedoresFactory> */
     use HasFactory;
     protected $table = 'proveedores';
-    protected $primaryKey = 'id';
     protected $fillable = [
         'nombre',
         'telefono',

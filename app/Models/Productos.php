@@ -11,16 +11,21 @@ class Productos extends Model
     use HasFactory;
 
     protected $table = 'productos';
-    protected $primaryKey = 'id_producto';
+
 
     protected $fillable = [
-        'producto_nombre',
         'proveedor_id',
+        'producto_nombre',
         'unidad',
         'notas',
         'estado',
     ];
 
+
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedores::class);
+    }
 
     // Scope para buscar por nombre
     public function scopeNombreLike($query, $nombre)

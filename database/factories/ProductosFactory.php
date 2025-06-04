@@ -22,7 +22,7 @@ class ProductosFactory extends Factory
             'proveedor_id' => Proveedores::all()->random()->id,
             'unidad' => $this->faker->randomElement(['kg', 'g', 'l', 'ml']),
             'notas' => $this->faker->sentence(),
-            'estado' => $this->faker->randomElement(['activo', 'inactivo']),
+            'estado' => 'activo', // Estado por defecto
         ];
     }
 }

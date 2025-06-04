@@ -23,6 +23,12 @@
             'url' => route('admin.proveedores.index'),
             'current' => request()->routeIs('admin.proveedores.*'),
         ],
+        [
+            'name' => 'Productos',
+            'icon' => 'shopping-bag',
+            'url' => route('admin.productos.index'),
+            'current' => request()->routeIs('admin.productos.*'),
+        ],
     ]
 ];
 @endphp
