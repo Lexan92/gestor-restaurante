@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Inventarios;
 use App\Models\OrdenesCompra;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Proveedores;
 use Illuminate\Http\Request;
 
 class OrdenesCompraController extends Controller
@@ -63,4 +66,41 @@ class OrdenesCompraController extends Controller
     {
         //
     }
+
+        public function generarOrden(Request $request, $proveedorId)
+{
+    // Buscar proveedor
+    $proveedor = Proveedores::findOrFail($proveedorId);
+
+    // Crear la orden de compra (ajusta los campos según tu modelo)
+    $orden = OrdenesCompra::create([
+        'proveedor_id' => $proveedor->id,
+        'estado' => 'activo', // o el estado que necesites
+        
+    ]);
+    
+
+    $inventarios = Inventarios::where('proveedor_id', $proveedor->id)
+        ->with('producto') // Cargar los productos relacionados
+        ->get();
+    // Agregar los productos a la orden de compra
+    foreach ($inventarios as $inventario) {
+        $orden->items()->create([
+            'producto_id' => $inventario->producto_id,
+            'cantidad' => $inventario->cantidad, // o la cantidad que necesites
+            'precio_unitario' => $inventario->producto->precio_compra, // Precio del producto
+        ]);
+    }
+
+
+   
+
+
+
+    // Generar PDF (usa dompdf, snappy, etc.)
+    $pdf = PDF::loadView('admin.ordenesCompras.pdf', compact('orden', 'proveedor'));
+
+    // Descargar o mostrar el PDF
+   return $pdf->stream('orden_compra_'.$orden->id.'.pdf');
+}
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\DetalleOrdenes;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class DetalleOrdenesController extends Controller
@@ -63,4 +64,7 @@ class DetalleOrdenesController extends Controller
     {
         //
     }
+
+
+
 }

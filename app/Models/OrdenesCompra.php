@@ -17,7 +17,7 @@ class OrdenesCompra extends Model
     ];
 
     public function items(){
-        return $this->hasMany(DetalleOrdenes::class);
+        return $this->hasMany(DetalleOrdenes::class, 'orden_compra_id');
     }
     
 }

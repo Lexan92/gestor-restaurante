@@ -71,9 +71,12 @@
                                     class="btn btn-blue text-xs">Editar Inventario
                                 </a>
 
-                                <a href="{{ route('admin.inventarios.create') }}" class="btn btn-green text-xs">Generar
-                                    Orden de Compra
-                                </a>
+                                <form action="{{ route('admin.ordenesCompras.pdf', $proveedore->id) }}" method="POST" target="_blank">
+                                    @csrf
+                                    <button type="submit" class="btn btn-green text-xs">
+                                        Generar Orden de Compra
+                                    </button>
+                                </form>
 
                                 <a href="{{ route('admin.inventarios.create') }}" class="btn btn-red text-xs">Ver
                                     Ordenes de Compra
