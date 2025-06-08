@@ -17,6 +17,7 @@ class Productos extends Model
         'proveedor_id',
         'producto_nombre',
         'unidad',
+        'precio_compra',
         'notas',
         'estado',
     ];
@@ -25,6 +26,11 @@ class Productos extends Model
     public function proveedor()
     {
         return $this->belongsTo(Proveedores::class);
+    }
+
+    public function inventario()
+    {
+        return $this->hasOne(Inventarios::class, 'producto_id', 'id');
     }
 
     // Scope para buscar por nombre

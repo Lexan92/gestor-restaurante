@@ -11,3 +11,6 @@
   .card {
     @apply bg-white px-6 py-8 shadow-lg rounded-lg;
   }
+  .btn-green {
+    @apply bg-green-500 text-white hover:bg-green-700;
+  }

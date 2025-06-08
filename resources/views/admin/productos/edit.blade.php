@@ -19,6 +19,10 @@
                 placeholder="Escribe el nombre del Producto" class="mb-4" />
             <flux:input name="unidad" label="Unidad Medida (Opcional)" value="{{ old('unidad', $productos->unidad) }}"
                 placeholder="Escriba unidad de medida (Opcional)" class="mb-4" />
+
+            <flux:input name="precio_compra" label="Precio (Opcional)" value="{{ old('precio_compra',$productos->precio_compra) }}"
+                placeholder="Escriba el Precio del Producto (Opcional)" class="mb-4"  />
+
             <flux:input name="notas" label="Notas (Opcional)" value="{{ old('notas', $productos->notas) }}"
                 placeholder="Escriba Notas adicionales (Opcional)" class="mb-4" />
 

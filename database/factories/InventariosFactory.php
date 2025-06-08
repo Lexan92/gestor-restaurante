@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Productos;
+use App\Models\Proveedores;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +20,10 @@ class InventariosFactory extends Factory
     {
         return [
             'producto_id' => Productos::all()->random()->id,
+            'proveedor_id' => Proveedores::all()->random()->id,
             'cantidad' => $this->faker->numberBetween(1, 100),
             'cantidad_minima' => $this->faker->numberBetween(1, 10),
+            
         ];
     }
 }

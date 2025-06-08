@@ -31,8 +31,10 @@ class DatabaseSeeder extends Seeder
         CategoriaProductos::factory(5)->create();
         Proveedores::factory(10)->create();
         Productos::factory(50)->create();
-        Inventarios::factory(20)->create();
+       // Inventarios::factory(200)->create();
         OrdenesCompra::factory(10)->create();
         DetalleOrdenes::factory(50)->create();
+
+        $this->call(InventariosSeeder::class);
     }
 }

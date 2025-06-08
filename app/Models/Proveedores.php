@@ -21,4 +21,14 @@ class Proveedores extends Model
     {
         return $query->where('estado', 'activo');
     }
+
+    public function productos()
+    {
+        return $this->hasMany(Productos::class, 'proveedor_id');
+    }
+
+    public function inventarios()
+    {
+        return $this->hasMany(Inventarios::class, 'proveedor_id');
+    }
 }

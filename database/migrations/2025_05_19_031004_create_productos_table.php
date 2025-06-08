@@ -16,13 +16,13 @@ return new class extends Migration
             $table->string('producto_nombre', 80);
             $table->foreignId('proveedor_id')->constrained('proveedores');
             $table->text('unidad')->nullable();
+            $table->decimal('precio_compra', 10, 2)->nullable()->default(0.00);
             $table->text('notas')->nullable();
             $table->enum('estado', ['activo', 'inactivo'])->default('activo');
             $table->timestamps();
-            
+
             // Índices adicionales para mejor rendimiento
             $table->index('producto_nombre');
-
         });
     }
 

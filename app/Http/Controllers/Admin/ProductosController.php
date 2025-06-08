@@ -56,6 +56,7 @@ class ProductosController extends Controller
             'producto_nombre' => 'required|string|min:3|max:255',
             'unidad' => 'required|string|max:50',
             'notas' => 'nullable|string|max:255',
+            'precio_compra' => 'nullable|numeric|min:0', // Validación para el precio de compra
             
         ]);
         $data['estado'] = 'activo'; // Asignar estado por defecto
@@ -98,6 +99,7 @@ class ProductosController extends Controller
             'producto_nombre' => 'required|string|min:3|max:255',
             'unidad' => 'required|string|max:50',
             'notas' => 'nullable|string|max:255',
+            'precio_compra' => 'nullable|numeric|min:0', // Validación para el precio de compra
         ]);
         $data['estado'] = 'activo'; // Asignar estado por defecto
         $productos->update($data);

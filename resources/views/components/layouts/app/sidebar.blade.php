@@ -7,6 +7,12 @@
             'url' => route('dashboard'),
             'current' => request()->routeIs('dashboard'),
         ],
+        [
+            'name' => "Inventarios",
+            'icon' => 'clipboard-document-check',
+            'url' => route('admin.inventarios.index'),
+            'current' => request()->routeIs('admin.inventarios.*'),
+        ],
         // Puedes agregar más elementos aquí
     ],
     // Puedes agregar más grupos aquí

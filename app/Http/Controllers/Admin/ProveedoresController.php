@@ -55,9 +55,9 @@ class ProveedoresController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Proveedores $proveedores)
+    public function edit(Proveedores $proveedore)
     {
-        return view('admin.proveedores.edit', compact('proveedores'));
+        return view('admin.proveedores.edit', compact('proveedore'));
     }
 
     /**

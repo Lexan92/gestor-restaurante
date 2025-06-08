@@ -13,13 +13,19 @@ class Inventarios extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'producto_id',
+        'proveedor_id',
         'cantidad',
         'cantidad_minima',
     ];
 
-    public function productos()
+    public function producto()
     {
-        return $this->belongsTo(Productos::class, 'id_producto');
+        return $this->belongsTo(Productos::class);
+    }
+
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedores::class, 'proveedor_id');
     }
 
     public function isLowStock()

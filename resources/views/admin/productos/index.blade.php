@@ -9,43 +9,40 @@
         <a href="{{ route('admin.productos.create') }}" class="btn btn-blue text-xs">Crear Producto</a>
     </div>
 
-<!-- Filtro mejorado con diseño coherente -->
-<div class="mb-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-    <form method="GET" action="{{ route('admin.productos.index') }}" class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-        <div class="md:col-span-3">
-            <label for="proveedor_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Filtrar por proveedor</label>
-            <select 
-                name="proveedor_id" 
-                id="proveedor_id"
-                class="w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white text-sm"
-            >
-                <option value="">Todos los proveedores</option>
-                @foreach($proveedores as $proveedor)
-                    <option 
-                        value="{{ $proveedor->id }}"
-                        {{ request('proveedor_id') == $proveedor->id ? 'selected' : '' }}
-                    >
-                        {{ $proveedor->nombre }}
-                        @if($proveedor->telefono)
-                            ({{ $proveedor->telefono }})
-                        @endif
-                    </option>
-                @endforeach
-            </select>
-        </div>
-        
-        <div class="flex gap-2">
-            <button type="submit" class="btn btn-blue text-xs w-full md:w-auto">
-                <i class="fas fa-filter mr-1"></i> Filtrar
-            </button>
-            @if(request()->has('proveedor_id'))
-                <a href="{{ route('admin.productos.index') }}" class="btn btn-gray text-xs w-full md:w-auto">
-                    <i class="fas fa-times mr-1"></i> Limpiar
-                </a>
-            @endif
-        </div>
-    </form>
-</div>
+    <!-- Filtro mejorado con diseño coherente -->
+    <div class="mb-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+        <form method="GET" action="{{ route('admin.productos.index') }}"
+            class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+            <div class="md:col-span-3">
+                <label for="proveedor_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Filtrar
+                    por proveedor</label>
+                <select name="proveedor_id" id="proveedor_id"
+                    class="w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white text-sm">
+                    <option value="">Todos los proveedores</option>
+                    @foreach ($proveedores as $proveedor)
+                        <option value="{{ $proveedor->id }}"
+                            {{ request('proveedor_id') == $proveedor->id ? 'selected' : '' }}>
+                            {{ $proveedor->nombre }}
+                            @if ($proveedor->telefono)
+                                ({{ $proveedor->telefono }})
+                            @endif
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="flex gap-2">
+                <button type="submit" class="btn btn-blue text-xs w-full md:w-auto">
+                    <i class="fas fa-filter mr-1"></i> Filtrar
+                </button>
+                @if (request()->has('proveedor_id'))
+                    <a href="{{ route('admin.productos.index') }}" class="btn btn-gray text-xs w-full md:w-auto">
+                        <i class="fas fa-times mr-1"></i> Limpiar
+                    </a>
+                @endif
+            </div>
+        </form>
+    </div>
 
     <div class="relative overflow-x-auto mb-4 shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -62,6 +59,9 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Unidad de Medida
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Precio de Compra
                     </th>
                     <th scope="col" class="px-6 py-3" width="10px">
                         <span class="sr-only">Editar</span>
@@ -84,6 +84,9 @@
                         </td>
                         <td class="px-6 py-4">
                             {{ $producto->unidad }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $producto->precio_compra ? '$' . number_format($producto->precio_compra, 2) : 'No definido' }}
                         </td>
                         <td class="px-6 py-4">
                             <div class="flex space-x-2">
