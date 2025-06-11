@@ -64,7 +64,14 @@ class OrdenesCompraController extends Controller
      */
     public function destroy(OrdenesCompra $ordenesCompra)
     {
-        //
+        $ordenesCompra->delete();
+        // Flash message
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien hecho!',
+            'text' => 'La orden de compra se ha eliminado correctamente.',
+        ]);
+        return redirect()->route('admin.inventarios.index');
     }
 
     public function generarOrden(Request $request, $proveedorId)
