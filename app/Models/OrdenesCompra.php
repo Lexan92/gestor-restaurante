@@ -19,5 +19,10 @@ class OrdenesCompra extends Model
     public function items(){
         return $this->hasMany(DetalleOrdenes::class, 'orden_compra_id');
     }
+
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedores::class, 'proveedor_id');
+    }
     
 }

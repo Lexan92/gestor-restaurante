@@ -109,4 +109,20 @@ class OrdenesCompraController extends Controller
         // Descargar o mostrar el PDF
         return $pdf->stream('orden_compra_' . $orden->id . '.pdf');
     }
+
+    /**
+     * Generar un PDF del historial de la orden de compra por proveedor.
+     */
+    public function historialPdf(Request $request, $orden)
+    {
+        // Buscar la orden de compra
+        $orden = OrdenesCompra::findOrFail($orden);
+        $proveedor = $orden->proveedor; // Obtener el proveedor relacionado
+
+        // Generar PDF (usa dompdf, snappy, etc.)
+        $pdf = PDF::loadView('admin.ordenesCompras.historialpdf', compact('orden', 'proveedor'));
+
+        // Descargar o mostrar el PDF
+        return $pdf->stream('historial_orden_compra_' . $orden->id . '.pdf');
+    }
 }

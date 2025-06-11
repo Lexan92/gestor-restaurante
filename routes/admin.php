@@ -18,3 +18,4 @@ Route::resource('inventarios', InventariosController::class);
 Route::resource('ordenesCompras', OrdenesCompraController::class);
 Route::resource('detalleOrdenesCompras', DetalleOrdenes::class);
 Route::post('/admin/ordenes-compras/{proveedor}', [OrdenesCompraController::class, 'generarOrden'])->name('admin.ordenesCompras.pdf');
+Route::post('ordenes-compras/{orden}/historial-pdf', [OrdenesCompraController::class, 'historialPdf'])->name('admin.ordenesCompra.historialpdf');

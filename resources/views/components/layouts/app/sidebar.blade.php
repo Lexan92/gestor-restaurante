@@ -173,6 +173,6 @@
 
         @fluxScripts
 
-        
+        @livewireScripts
     </body>
 </html>
