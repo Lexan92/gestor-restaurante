@@ -12,6 +12,11 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    resolve: {
+        alias: {
+            '@vendor': '/opt/render/project/src/vendor',
+        },
+    },
     server: {
         cors: true,
     },
