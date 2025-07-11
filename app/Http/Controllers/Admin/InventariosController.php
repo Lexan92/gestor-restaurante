@@ -65,7 +65,7 @@ class InventariosController extends Controller
      */
     public function edit(Inventarios $inventarios)
     {
-        //
+        
     }
 
     /**
